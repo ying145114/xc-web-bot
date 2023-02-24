@@ -68,7 +68,7 @@ document.write( "正在连接到服务器…<br>" );
              ws.onmessage = function ( evt ) {
                  var received_msg = evt.data;
                  document.write( received_msg + "<br>");
-		if (JSON.parse(received_msg).cmd=="chat" && JSON.parse(received_msg).text=="awa") ws.send(`{"cmd":"chat","text":"uwu"}`)
+		if (JSON.parse(received_msg).cmd=="chat" && JSON.parse(received_msg).text=="关于m酱") ws.send(`{"cmd":"chat","text":"m酱算是miku的一个女儿，尽管她还不是很成熟。最起码她已经15岁了，最初的m酱是使用easybot框架运行的。之后网页机器人横空出世，m酱使用了网页机器人再次回归xc。尽管小张还是没能回来，但是我们可能会联系小张如何调用js聊天API（但愿你喜欢就好）"}`)
 		if (JSON.parse(received_msg).cmd=="chat" && JSON.parse(received_msg).trip==admi && JSON.parse(received_msg).text=="stop") ws.send(``)
 
                 if (load) {
