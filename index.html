@@ -80,7 +80,9 @@ document.write( "正在连接到服务器…<br>" );
 		};
 		if (JSON.parse(received_msg).cmd=="warn") ws.send(`{"cmd":"chat","text":"出错了，详细信息：\\n` + JSON.parse(received_msg).text + `"}`)
 		if (JSON.parse(received_msg).cmd=="info" && JSON.parse(received_msg).type=="whisper") ws.send(`{"cmd":"chat","text":` + JSON.stringify(JSON.parse(received_msg).text.replace("你","我")) + `}`)
-const texta = [`hi`,`/me 你好`,`/me 您好`,`/me hello`,`/me 欢迎`,`/me welcome`,`/me hi,yo.`,`(\\*´▽｀)ノノ`]
+const texta = [`hi`,`你好`,`您好`,`hello`,`欢迎`,`welcome`,`awa`,`(\\*´▽｀)ノノ`]
+
+if (JSON.parse(received_msg).cmd=="onlineAdd") ws.send(`{"cmd":"whisper","nick":"` + JSON.parse(received_msg).nick + `","text":"` + texta[Math.floor(Math.random() * (texta.length - 1 - 1 + 0)) + 0] + `"}`)
 if (JSON.parse(received_msg).cmd=="onlineAdd") ws.send(`{"cmd":"chat","text":"@` + JSON.parse(received_msg).nick + ` ` + texta[Math.floor(Math.random() * (texta.length - 1 - 1 + 0)) + 0] +`"}`)
 const textb = [`/me 欢迎回来`,`/me 欢迎回归`,`/me 欢迎回来XC`,`/me 欢迎回归XC`,`/me 热烈欢迎回归`,`/me 热烈欢迎回归XC`,`/me 热烈欢迎回来XC`,`/me 热烈欢迎回来`]
 if (JSON.parse(received_msg).cmd=="chat" && JSON.parse(received_msg).server && JSON.parse(received_msg).text!=JSON.parse(received_msg).text.replace("/me 欢迎回来","")) ws.send(`{"cmd":"chat","text":"` + JSON.parse(received_msg).text.replace("/me 欢迎回来！",textb[Math.floor(Math.random() * (textb.length - 1 - 1 + 0)) + 0]) +`"}`)
